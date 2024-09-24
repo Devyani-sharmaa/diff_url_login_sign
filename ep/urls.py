@@ -7,6 +7,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('login/',views.LoginPage,name='login'),
     path('logout/',views.LogoutPage,name='logout'),
-    path('home/',views.HomePage,name='home'),
-     path('submit/',views.submit)]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    # path('home/',views.HomePage,name='home'),
+    path('submit/',views.submit),
+    path('', views.dashboard_with_pivot, name='dashboard_with_pivot'),
+    path('data', views.pivot_data, name='pivot_data'),]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
     

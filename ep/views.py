@@ -2,17 +2,30 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from .models import Order
+from django.core import serializers
 # Create your views here.
 from .forms import MyForm
+
+def dashboard_with_pivot(request):
+    return render(request, 'home.html', {})
+
+
+def pivot_data(request):
+    dataset = Order.objects.all()
+    data = serializers.serialize('json', dataset)
+    return JsonResponse(data, safe=False)
 
 
 @login_required(login_url='login')
 def HomePage(request):
+   
     return render (request,'home.html')
 
 
 def LoginPage(request):
     form=MyForm()
+   
     if request.method=='POST':
         username=request.POST.get('username')
         pass1=request.POST.get('pass')

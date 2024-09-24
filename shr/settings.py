@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "lg",
     "captcha",
-    "ep"
+    "ep",
+    
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,16 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "devyani",
+#         "USER": "root",
+#         "PASSWORD": "devyani@12",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
 
 
 # Password validation

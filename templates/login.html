@@ -75,7 +75,7 @@ form{
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
-    left: 70%;
+    left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
@@ -162,7 +162,7 @@ button:hover{
     </style>
 </head>
 <body>
-  <h1 id= "heading">PROXIMO ERP</h1>
+  {% comment %} <h1 id= "heading">PROXIMO ERP</h1>
 
   
   <br>
@@ -171,7 +171,7 @@ button:hover{
     </div>
   <h3  class = "design" >&#x2713; Highly customizable</h3>
         <h3 class = "design">&#x2713;  Affordable</h3>
-        <h3 class = "design">&#x2713; Flexible Deployment</h3>
+        <h3 class = "design">&#x2713; Flexible Deployment</h3> {% endcomment %}
 
 
     
@@ -231,7 +231,7 @@ button:hover{
                 if (enteredCaptcha === displayedCaptcha) {
                     alert('Captcha is correct!');
                 
-                window.location.href='http://127.0.0.1:5500/templates/home.html';
+                window.location.href='http://127.0.0.1:5501/templates/home.html';
                 }
                 else {
                     alert('Captcha is incorrect. Please try again.');
