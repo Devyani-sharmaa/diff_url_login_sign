@@ -1,0 +1,46 @@
+{% comment %} 
+<div style="margin-left: 22%; margin-right: 22%;">
+    <div style="text-align: center; padding: 20px;">
+
+
+<div>
+    <h1 style="  color: red;
+    background: black;">contact us</h1>
+<form action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Product Name</label>
+      <input type="text"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pname">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Product description</label>
+        <input type="text"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pdes">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Price</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="price">
+      </div>
+
+    <div class="mb-3 form-check">
+        <label for="exampleInputPassword1" class="form-label">upload image 2</label>
+        <input type="file" class="form-control" id="exampleInputPassword1" name="img2">
+
+    </div>
+
+    <div class="mb-3 form-check">
+        <label for="exampleInputPassword1" class="form-label">upload image 3</label>
+        <input type="file" class="form-control" id="exampleInputPassword1" name="img3">
+
+    </div>
+
+
+      <div style="text-align: center;">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+<div>
+  <a href="delte-record/"><button type="button" class="btn btn-danger">Delete</button></a>
+  <a href="update-record/{{x.id}}"><button type="button" class="btn btn-success">Update</button></a>
+</div>
+  </form>
+</div> {% endcomment %}

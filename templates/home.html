@@ -1,155 +1,151 @@
-
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard with Flexmonster</title>
-    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.flexmonster.com/demo.css">
-    <style>
-/* Charts Style  */
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.fm-charts-color-1 {
-  fill: #ffa600 !important;
-}
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="/static/style.css">
 
-.fm-charts-color-2 {
-  fill: #7eae26 !important;
-}
-
-.fm-charts-color-3 {
-  fill: #00a45a !important;
-}
-
-.fm-charts-color-4 {
-  fill: #df3800 !important;
-}
-
-.fm-charts-color-5 {
-  fill: #e95800 !important;
-}
-
-.fm-charts-color-6 {
-  fill: #ffa600 !important;
-}</style>
+	<title>AdminHub</title>
 </head>
 <body>
-<div id="pivot-table-container" data-url="{% url 'pivot_data' %}"></div>
-<div id="pivot-chart-container"></div>
-<script>
-function processData(dataset) {
-    var result = []
-    dataset = JSON.parse(dataset);
-    dataset.forEach(item => result.push(item.fields));
-    return result;
-}
-$.ajax({
-    url: $("#pivot-table-container").attr("data-url"),
-    dataType: 'json',
-    success: function(data) {
-        new Flexmonster({
-            container: "#pivot-table-container",
-            componentFolder: "https://cdn.flexmonster.com/",
-            width: "100%",
-            height: 430,
-            toolbar: true,
-            report: {
-                dataSource: {
-                    type: "json",
-                    data: processData(data),
-                    mapping: {
-                        "product_category": {
-                            "caption": "Product Category"
-                        },
-                        "payment_method": {
-                            "caption": "Payment Method"
-                        },
-                        "shipping_cost": {
-                            "caption": "Shipping Cost",
-                            "type": "number"
-                        },
-                        "unit_price": {
-                            "caption": "Unit Price",
-                            "type": "number"
-                        }
-                    }
-                },
-                "slice": {
-                    "rows": [{
-                        "uniqueName": "product_category"
-                    }],
-                    "columns": [{
-                            "uniqueName": "payment_method"
-                        },
-                        {
-                            "uniqueName": "[Measures]"
-                        }
-                    ],
-                    "measures": [{
-                            "uniqueName": "shipping_cost",
-                            "aggregation": "sum"
-                        },
-                        {
-                            "uniqueName": "unit_price",
-                            "aggregation": "sum"
-                        }
-                    ]
-                }
-            }
-        });
-        new Flexmonster({
-            container: "#pivot-chart-container",
-            componentFolder: "https://cdn.flexmonster.com/",
-            width: "100%",
-            height: 430,
-            //toolbar: true,
-            report: {
-                dataSource: {
-                    type: "json",
-                    data: processData(data),
-                    mapping: {
-                        "product_category": {
-                            "caption": "Product Category"
-                        },
-                        "payment_method": {
-                            "caption": "Payment Method"
-                        },
-                        "shipping_cost": {
-                            "caption": "Shipping Cost",
-                            "type": "number"
-                        },
-                        "unit_price": {
-                            "caption": "Unit Price",
-                            "type": "number"
-                        }
-                    }
-                },
-                "slice": {
-                    "rows": [{
-                        "uniqueName": "product_category"
-                    }],
-                    "columns": [{
-                        "uniqueName": "[Measures]"
-                    }],
-                    "measures": [{
-                        "uniqueName": "Price",
-                        "formula": "sum(\"shipping_cost\") + sum(\"unit_price\")",
-                        "caption": "Price"
-                    }]
-                },
-                "options": {
-                    "viewType": "charts",
-                    "chart": {
-                        "type": "pie"
-                    }
-                }
-            }
-        });
-    }
-});
+			
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">AUTUS</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">My Store</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Analytics</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">Message</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Team</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
 
 
-</script>
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download' ></i>
+					<span class="text">Download PDF</span>
+				</a>
+			</div>
+
+		
+			<div class ="container">
+				<div class="row">
+					<div class ="col-md-6">
+		
+						{% for i in articles %}
+		
+		
+						<div class="card rounded shadow-lg m-2" style="width: 25rem;">
+							<img src="{{i.urlToImage}}" class="card-img-top" alt="...">
+							<div class="card-body">
+							 <p class="card-title">{{i.author}}</p>
+							  <h5 class="card-title">{{i.title}}</h5>
+		
+							  <p class="card-text">{{i.source.name}}</p>
+							  <p class="card-text">{{i.description}}</p>
+							  <small>date:{{i.publishedAt}}</small>
+							  <a href="{{i.url}}" class="btn btn-success m-1">Go somewhere</a>
+							</div>
+						  </div>
+		
+						{% endfor %}
+					</div>
+					<div class='col-md-6'>
+						category
+					</div>
+				</div>
+			</div>
+	
+
+	<script src="/static/script.js"></script>
 </body>
 </html>
